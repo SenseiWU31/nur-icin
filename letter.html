@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Seni Çok Seviyorum, Nur ❤️</title>
+  <style>
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#fff4f6,#fff)}
+    .wrap{max-width:820px;margin:40px auto;padding:32px;border-radius:16px;background:linear-gradient(180deg,#fff,#fff7f8);box-shadow:0 18px 60px rgba(209,62,86,0.06);color:#333}
+    h1{margin:0 0 12px;color:#e85d75;font-size:32px}
+    .subtitle{color:#6b6b6b;margin-bottom:18px}
+    .content{line-height:1.6;color:#444}
+    .actions{margin-top:22px}
+    a.back{display:inline-block;background:#ff6b81;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none}
+    .confetti-piece{position:fixed;width:10px;height:14px;will-change:transform,opacity;pointer-events:none;z-index:9999}
+  
+    *{box-sizing:border-box}
+    body{overflow-x:hidden;background:radial-gradient(ellipse at 15% 5%,#fff0f4,transparent 42%),linear-gradient(180deg,#fff7f9,#fff)}
+    .wrap{position:relative;z-index:1;width:min(100% - 2rem,820px);margin:32px auto;padding:clamp(22px,6vw,42px);border-radius:20px}
+    .content p{margin:0 0 1.15rem}
+    .content p.reveal{opacity:0;filter:blur(3px);transform:translateY(12px);transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+    .content p.reveal.visible{opacity:1;filter:blur(0);transform:translateY(0)}
+    .heart-field{position:fixed;z-index:0;inset:0;overflow:hidden;pointer-events:none}
+    .floating-heart{position:absolute;bottom:-2rem;color:rgba(232,93,117,.28);line-height:1;animation:float-heart var(--duration,10s) linear forwards;will-change:transform,opacity}
+    @keyframes float-heart{0%{opacity:0;transform:translate3d(0,0,0) rotate(-12deg) scale(.72)}12%{opacity:.8}82%{opacity:.62}100%{opacity:0;transform:translate3d(var(--drift,20px),-115vh,0) rotate(28deg) scale(1.15)}}
+    @media(max-width:600px){.wrap{width:calc(100% - 1rem);margin:10px auto;padding:25px 18px;border-radius:15px}h1{font-size:clamp(25px,8vw,34px)}.content{line-height:1.78}.subtitle{line-height:1.6}}
+    @media(prefers-reduced-motion:reduce){.floating-heart{display:none}.content p.reveal{opacity:1;filter:none;transform:none}}
+
+  </style>
+  <script>
+    // small confetti on page load
+    function spawnConfetti(){
+      const colors = ['#ff6b81','#ff9aa2','#ffd6e0','#ffe6f0','#ffd1d9'];
+      const count = 50;
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.left = Math.random()*100 + 'vw';
+        el.style.top = (-10 - Math.random()*40) + 'vh';
+        el.style.width = (6 + Math.random()*12)+'px';
+        el.style.height = (8 + Math.random()*14)+'px';
+        el.style.borderRadius = (Math.random()>0.5? '2px' : '50%');
+        const dur = 900 + Math.random()*900;
+        el.style.transition = 'transform '+(dur/1000)+'s linear, opacity 1s linear';
+        document.body.appendChild(el);
+        requestAnimationFrame(()=>{
+          el.style.transform = `translateY(${110 + Math.random()*20}vh) rotate(${Math.random()*720}deg)`;
+          el.style.opacity = '0';
+        });
+        setTimeout(()=>el.remove(), dur+900);
+      }
+    }
+    window.addEventListener('load', spawnConfetti);
+  </script>
+</head>
+<body>
+  <div class="heart-field" id="heartField" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1>Seni Çok Seviyorum</h1>
+    <div class="subtitle">Sana, kalbimden gelen bir mektup… ♡</div>
+    <div class="content" id="content">
+      <p><strong>❤️ Artık Biz Varız…</strong></p>
+      <p><strong>Sevgilim, hayatımın en güzel tesadüfü… ❤️</strong></p>
+
+      <p>Öncelikle buraya kadar geldiğin için sana teşekkür etmek istiyorum. Belki şu an yüzünde küçük bir gülümseme var, belki ne yazacağımı merak ediyorsun, belki de benim gibi heyecanlısın. Ama bilmeni istediğim bir şey var: Şu an bu yazıyı okuyor olman bile benim için çok özel. Çünkü bu sayfanın her kelimesinde sana anlatmak istediğim duygularım, sana dair hayallerim ve seninle yaşamak istediğim kocaman bir gelecek var.</p>
+
+      <p>Ve artık sana sadece seni sevdiğimi söylemek istemiyorum. Sana, hayatımda nasıl bir yerin olduğunu, neden seni seçtiğimi ve neden seninle bir gelecek hayal ettiğimi anlatmak istiyorum.</p>
+
+      <p><strong>Çünkü bugün benim için sıradan bir gün değil. Bugün, belki de birlikte yazacağımız en güzel hikâyenin ilk sayfası.</strong> ❤️</p>
+
+      <p>Biliyor musun, bazen insan hiç beklemediği bir anda biriyle tanışır. Başlangıçta her şey normal görünür. Birkaç mesaj, birkaç konuşma, küçük gülümsemeler… Sonra bir bakarsın, gün içinde anlatmak istediğin ilk kişi o olmuş. Güzel bir şey yaşadığında onunla paylaşmak istersin, canın sıkıldığında onun sesini duymak istersin. Telefonuna bildirim geldiğinde istemsizce gülümsersin. Bazen hiçbir şey yapmadan sadece onunla konuşmak bile gününü güzelleştirir.</p>
+
+      <p>İşte sen benim için böyle biri oldun.</p>
+
+      <p>Farkında mısın bilmiyorum ama seninle konuşmak, günümün en güzel anlarından biri hâline geldi. Bazen sana anlatacak çok şeyim oluyor, bazen de hiçbir şey anlatmasam bile seninle konuşmak istiyorum. Çünkü mesele ne konuştuğumuz değil, kiminle konuştuğumuz. Seninle geçen sıradan bir dakika bile benim için güzelleşebiliyor.</p>
+
+      <p>Sesin, mesajların, bana olan yaklaşımın, bazen söylediğin küçücük bir söz… Bunların benim üzerimde nasıl bir etki bıraktığını belki tam olarak bilmiyorsun. Ama keşke bazen kendime senin gözlerinden bakabilsem ve sana hissettirdiğim şeyleri görebilsem. Çünkü ben, senin yanımda olmanın nasıl bir his olduğunu şimdiden hayal ediyorum.</p>
+
+      <p>Ve işte tam burada, aramızdaki mesafeden bahsetmek istiyorum. ❤️‍🩹</p>
+
+      <p>Evet, belki şu an aynı şehirde değiliz. Belki istediğimiz zaman buluşamıyoruz. Belki canımız birbirimizi görmek istediğinde tek yapabildiğimiz şey telefonlarımızın ekranına bakmak. Belki bazen sana sarılmak istediğimde bunu yapamıyorum. Belki kötü bir gün geçirdiğinde yanında olup elini tutamıyorum. Belki sana bakıp hiçbir şey söylemeden bile anlaşmak isterken aramızda kilometreler var.</p>
+
+      <p>Ama biliyor musun, ben mesafeyi sadece iki insanın arasındaki kilometreler olarak görüyorum. Çünkü bir insanın kalbine yakın olmak için her zaman fiziksel olarak yanında olması gerekmiyor.</p>
+
+      <p><strong>Ben sana kilometrelerce uzakta olsam bile, kalbimle yanında olmak istiyorum.</strong></p>
+
+      <p>Üzüldüğünde seni dinleyen, mutlu olduğunda seninle sevinen, kendini yalnız hissettiğinde sana yalnız olmadığını hatırlatan kişi olmak istiyorum. Her şey yolundayken değil, işler zorlaştığında da yanında kalmak istiyorum. Sadece güzel günlerinin değil, zor günlerinin de bir parçası olmak istiyorum.</p>
+
+      <p>Çünkü benim istediğim şey yalnızca seninle güzel vakit geçirmek değil. Ben seninle bir bağ kurmak, birbirimizi tanımak, anlamak, birbirimize güvenmek ve zamanla çok daha güzel bir şey inşa etmek istiyorum.</p>
+
+      <p>Senden mükemmel olmanı beklemiyorum. Her zaman mutlu olmanı, hiç üzülmemeni, hiç hata yapmamamızı da beklemiyorum. İkimiz de insanız. Bazen yanlış anlayabiliriz, bazen tartışabiliriz, bazen birbirimizi istemeden kırabiliriz. Ama benim dileğim, böyle zamanlarda birbirimizden uzaklaşmak yerine birbirimize yaklaşmayı öğrenmemiz.</p>
+
+      <p>Birbirimizi dinleyelim. İçimize atmak yerine konuşalım. Gururumuz yüzünden sevgimizi saklamayalım. Bir sorun olduğunda birbirimize karşı değil, soruna karşı birlikte duralım.</p>
+
+      <p>Çünkü ben haklı çıkmak için seni kaybetmek istemiyorum. Bir tartışmayı kazanıp seni üzmek istemiyorum. Ben seninle aynı takımda olmak istiyorum. Sen ve ben, karşımızdaki iki rakip değil; birbirini anlamaya çalışan iki insan olalım istiyorum.</p>
+
+      <p>Ve eğer bir gün moralin bozulursa, kendini yetersiz hissedersen ya da kimsenin seni anlamadığını düşünürsen, sana seni olduğun hâlinle önemseyen birinin olduğunu hatırlatmak isterim.</p>
+
+      <p>Senin her zaman güçlü görünmek zorunda olmadığın, her şeyi tek başına çözmek zorunda olmadığın bir yer olmak istiyorum. Bana içini dökebildiğin, saçmalayabildiğin, gülebildiğin, ağlayabildiğin, kendin olabildiğin biri olmak istiyorum.</p>
+
+      <p>Seni değiştirmek için değil, seni tanımak için yanında olmak istiyorum. Seni kontrol etmek için değil, sana güvenmeyi ve senin güvenini kazanmayı istiyorum. Seni kendime ait bir şey gibi görmek için değil, kendi hayatı ve hayalleri olan bir insan olarak sevmek istiyorum.</p>
+
+      <p><strong>Ben senin sadece sevgilin olmak değil, aynı zamanda en güvendiğin insanlardan biri olmak istiyorum.</strong> ❤️</p>
+
+      <p>Peki ya geleceğimiz?</p>
+
+      <p>İnan bana, bazen geleceği düşündüğümde aklıma öyle güzel şeyler geliyor ki… Belki bunlar şu an çok uzakta gibi görünüyor ama ben o günleri hayal etmeyi seviyorum.</p>
+
+      <p>Bir gün gelecek ve artık birbirimize sadece ekranlardan bakmayacağız.</p>
+
+      <p>Bir gün sana sarılabileceğim. Gerçekten, sımsıkı sarılabileceğim. O an ne söyleyeceğimi bile unutabilirim belki. Çünkü bazen insanın içinde biriktirdiği bütün özlemi anlatacak kelime bulması mümkün olmuyor. Belki sadece sana sarılıp birkaç saniye öylece kalmak isteyeceğim. Belki yüzüne bakıp gülümseyeceğim. Belki de içimden, "İşte sonunda buradasın," diyeceğim.</p>
+
+      <p>O gün geldiğinde kilometrelerin ne kadar uzun olduğunu değil, onları aşmak için ne kadar sabrettiğimizi hatırlamak istiyorum.</p>
+
+      <p>Seninle yürüyüşe çıkmak istiyorum. Elini tutup yan yana yürümek, saçma sapan şeylere gülmek, birlikte fotoğraflar çekmek, güzel bir yerde oturup saatlerce konuşmak istiyorum. Bazen hiçbir plan yapmadan dışarı çıkalım, bazen evde oturup film izleyelim, bazen de sadece yan yana duralım istiyorum.</p>
+
+      <p>Birlikte yaşayacağımız küçük anları hayal ediyorum. Mesela sana sevdiğin bir şeyi alıp sürpriz yapmak… Birlikte yemek yemek… Sen bir şey anlatırken yüzüne bakıp seni dinlemek… Birlikte güldüğümüz bir anın fotoğrafını saklamak… Sonra aylar geçince o fotoğrafa bakıp aynı gün hakkında yeniden konuşmak…</p>
+
+      <p>Belki bir gün bugünleri hatırlayıp güleceğiz. "Hatırlıyor musun, bir zamanlar birbirimizi görmek için gün sayıyorduk?" diyeceğiz.</p>
+
+      <p>Ve ben o gün geldiğinde, bütün bu bekleyişin sonunda seninle yan yana olmanın ne kadar güzel olduğunu hissetmek istiyorum.</p>
+
+      <p>Ama sana boş vaatler vermek istemiyorum. Her şeyin kolay olacağını, hiç zorlanmayacağımızı ya da geleceğin nasıl şekilleneceğini bildiğimi söyleyemem. Hayat bazen planlarımızı değiştirebilir. Önemli olan, birbirimize karşı dürüst olmamız ve aynı şeyi istiyorsak bunun için birlikte çaba göstermemiz.</p>
+
+      <p>Benim sana vermek istediğim şey, gerçekleşmesi garanti olmayan büyük sözler değil; bugün başlayıp zamanla davranışlarımla göstermeyi umduğum gerçek bir sevgi.</p>
+
+      <p>Sana zaman ayırmak, seni dinlemek, seni önemsemek, verdiğim sözleri tutmaya çalışmak ve aramızdaki güveni korumak istiyorum. Çünkü biliyorum ki bir ilişki yalnızca güzel sözlerle değil, o sözlerin arkasında durmakla güzelleşir.</p>
+
+      <p>Ve ben seninle böyle bir ilişki istiyorum.</p>
+
+      <p>Sadece bugün heyecanlandığımız için değil, zaman geçtikçe birbirimizi daha iyi tanıdığımız için de birbirimizi seçelim istiyorum.</p>
+
+      <p>Her gün aynı duyguları aynı yoğunlukta yaşamayabiliriz. Ama sevgimizin yanında saygımız, güvenimiz ve birbirimize gösterdiğimiz özen de olsun istiyorum. Birbirimizin hayatını güzelleştirelim, birbirimizi büyütelim ve birlikte güzel anılar biriktirelim istiyorum.</p>
+
+      <p><strong>Çünkü benim için aşk yalnızca birini özlemek değil; onu tanımaya, anlamaya ve hayatında ona gerçekten yer açmaya gönüllü olmaktır.</strong></p>
+
+      <p>Ve ben sana hayatımda böyle bir yer açmak istiyorum. ❤️</p>
+
+      <p>Belki şu an bu yazıyı okurken gülümsüyorsun. Belki bazı cümleleri tekrar okuyorsun. Belki de "Bu çocuk gerçekten bunları mı düşünüyor?" diyorsun. Evet, düşünüyorum. Çünkü sana anlatmak istediğim şeyleri birkaç kelimeye sığdırmak istemedim.</p>
+
+      <p>Sana sadece "Seni seviyorum" deyip geçmek istemedim. Çünkü bazen üç kelimenin arkasında anlatılmayı bekleyen kocaman bir dünya oluyor.</p>
+
+      <p>Benim dünyamda seninle ilgili hayaller, birlikte yaşayabileceğimiz anlar, konuşmalarımız, gülüşlerin ve henüz yaşamadığımız nice güzel gün var.</p>
+
+      <p>Ve şunu bilmeni istiyorum: Seninle bir ilişkiye başlamak benim için sadece sana sevgilim demek olmayacak. Bu, seni daha yakından tanımaya, aramızdaki bağı güçlendirmeye ve birlikte bir şeyler inşa etmeye verdiğim bir şans olacak.</p>
+
+      <p>Senden her şeyi bir anda bilmeni ya da anlamanı beklemiyorum. Birbirimizi zamanla tanıyacağız. Birbirimizin sevdiği şeyleri, hassas noktalarını, hayallerini ve korkularını öğreneceğiz. Belki birbirimizin hiç bilmediğimiz yönlerini keşfedeceğiz.</p>
+
+      <p>Ve umarım zaman geçtikçe sen de benim yanında kendin olabildiğin, güvende hissettiğin ve içtenlikle gülümseyebildiğin bir insan olduğumu hissedersin.</p>
+
+      <p>Çünkü senin mutluluğun benim için önemli. Senin düşüncelerin önemli. Senin sınırların, hayallerin ve duyguların önemli. Benimle birlikteyken kendinden vazgeçmeni değil, kendin olarak sevilmenin ne demek olduğunu hissetmeni isterim.</p>
+
+      <p>Sana her zaman kusursuz davranacağımı iddia edemem ama yanlış yaptığımda dinlemeye, anlamaya ve düzeltmeye çalışmak isterim. Seni hiçbir zaman üzmeyeceğimi söyleyemem ama üzüldüğünde bunu önemsemek ve aramızdaki sorunları çözmek için çaba göstermek isterim.</p>
+
+      <p>Çünkü seni sevmenin, yalnızca güzel anlarda romantik cümleler kurmaktan daha fazlası olduğuna inanıyorum.</p>
+
+      <p>Bazen sevgi, gününün nasıl geçtiğini sormaktır. Bazen yoğun olsan bile birbirinize vakit ayırmanın bir yolunu bulmaktır. Bazen bir yanlış anlaşılmayı sabırla çözmektir. Bazen de karşındaki insanın konuşmaya değil, yalnızca anlaşılmaya ihtiyacı olduğunu fark etmektir.</p>
+
+      <p>Ben seninle bunları öğrenmek istiyorum.</p>
+
+      <p>Seninle birlikte büyümek, birlikte gülmek, birlikte yeni şeyler keşfetmek ve günün sonunda birbirimizin hayatında güzel bir iz bırakmak istiyorum.</p>
+
+      <p>Ve eğer bir gün yıllar sonra bugüne dönüp bakarsak, bu sayfanın bizim hikâyemizin başlangıçlarından biri olduğunu hatırlamak istiyorum.</p>
+
+      <p>Belki bugün her şey küçücük bir ekranın içinde başladı. Birkaç kelimeyle, bir soruyla, bir cevapla… Ama kim bilir, belki de bir gün bu ekranın başında başlayan heyecanımızı gerçek hayatta yan yana otururken anlatacağız.</p>
+
+      <p>Belki o gün sana bu yazıyı yeniden göstereceğim. Birlikte okuyacağız, bazı yerlerinde güleceğiz ve ben sana şunu söyleyeceğim:</p>
+
+      <p>"Bak, sana bunları yazdığım gün bile seninle böyle güzel anılarımız olsun istiyordum."</p>
+
+      <p>İşte o günün hayali bile beni mutlu ediyor.</p>
+
+      <p>Ve şimdi sana son bir şey söylemek istiyorum.</p>
+
+      <p><strong>İyi ki seni tanımışım. İyi ki seninle konuşmaya başlamışım. İyi ki hayatımda sana yer açmışım.</strong> ❤️</p>
+
+      <p>Seninle yaşayacağımız her güzel an için şimdiden heyecanlanıyorum. Mesafeler ne kadar uzun olursa olsun, birbirimizi gerçekten istiyorsak birbirimize yaklaşmanın yollarını bulabileceğimize inanıyorum.</p>
+
+      <p>Ben bu hikâyenin yalnızca güzel bir başlangıçtan ibaret olmasını istemiyorum. Zamanla daha da güzelleşen, emek verdiğimiz, birbirimize güvendiğimiz ve dönüp baktığımızda iyi ki dediğimiz bir hikâye olsun istiyorum.</p>
+
+      <p>Ve umarım bir gün birbirimize sarıldığımızda, bugün burada yazdığım bütün bu kelimelerin anlamını bir kez daha hissederiz.</p>
+
+      <p>O zamana kadar mesajlarımız, aramalarımız, sesimiz, kahkahalarımız ve birbirimize ayırdığımız zaman olsun. Birbirimizi özlediğimiz günler de olsun, birbirimize kavuşacağımız günü heyecanla beklediğimiz günler de…</p>
+
+      <p>Çünkü ben yalnızca kavuşacağımız günü değil, o güne kadar seninle paylaşacağımız bütün küçük anları da önemsiyorum.</p>
+
+      <p><strong>Ve artık bu hikâyede yalnızca ben yokum. Sen varsın, ben varım ve birlikte yazabileceğimiz bir hikâye var.</strong> 🫶🏻</p>
+
+      <p>Bundan sonra sana sevgilim diyebilmenin heyecanı, gün içinde sana anlatmak istediğim şeyler, sana söyleyeceğim güzel sözler ve birlikte kuracağımız hayaller var.</p>
+
+      <p>Her şeyin en güzelini hemen yaşamak zorunda değiliz. Acele etmeden, birbirimizi tanıyarak, birbirimize güvenerek ve her gün yeniden birbirimizi seçerek ilerleyebiliriz.</p>
+
+      <p>Belki aramızda kilometreler olacak ama umarım hiçbir zaman birbirimizi anlamaya çalışmaktan vazgeçmeyiz.</p>
+
+      <p>Belki bazen özlemek zor gelecek ama umarım birbirimize neden başladığımızı hatırlatacağız.</p>
+
+      <p>Belki her gün mükemmel geçmeyecek ama umarım güzel günlerimizde birlikte gülecek, zor günlerimizde de birbirimize karşı dürüst ve anlayışlı olacağız.</p>
+
+      <p>Benim hayalim tam olarak bu.</p>
+
+      <p>Gösterişli, kusursuz ya da herkesin imreneceği bir ilişki değil…</p>
+
+      <p><strong>İkimizin de mutlu olduğu, birbirimize değer verdiğimiz, sevgimizi hissettirdiğimiz ve bir gün geriye dönüp "Biz gerçekten çok güzel şeyler yaşamışız" diyebildiğimiz bir ilişki.</strong></p>
+
+      <p>Ve eğer bu hikâyeyi benimle birlikte yazmak istersen, ben de seninle birlikte her yeni sayfayı keşfetmek için sabırsızlanıyorum.</p>
+
+      <p>Seni tanımaya, seni anlamaya, seninle gülmeye, sana sarılacağımız günü beklemeye ve hayatın bize getireceği güzel anıları birlikte biriktirmeye…</p>
+
+      <p>Şimdi bu yazının sonuna geldik ama umarım bizim hikâyemizin daha çok başındayızdır.</p>
+
+      <p><strong>Çünkü bu, son değil sevgilim. Bu, bizim ilk sayfamız.</strong> ❤️‍🩹</p>
+
+      <p>Ve son olarak…</p>
+
+      <p>Seni kilometrelerle ölçemeyeceğim kadar çok özlemek, bazen tek bir mesajınla gülümsemek, sesini duyunca mutlu olmak ve gelecekte seninle yan yana olacağımız günleri hayal etmek… Bunların hepsi benim için çok özel.</p>
+
+      <p>Umarım bir gün bu yazıyı okurken hayalini kurduğumuz şeylerin birçoğunu birlikte yaşamış oluruz.</p>
+
+      <p>Umarım bugün kurduğumuz hayaller, yarınlarımızın güzel anılarına dönüşür.</p>
+
+      <p>Umarım bir gün birbirimize bakıp, bütün bu mesafelere rağmen birbirimizi tanımaya ve sevmeye şans verdiğimiz için mutlu oluruz.</p>
+
+      <p>Ve umarım o gün geldiğinde, senin elini tutarken içimden yine aynı şey geçer:</p>
+
+      <p><strong>"İyi ki o gün evet demişsin. İyi ki bizim hikâyemiz başlamış."</strong> ❤️</p>
+
+      <p>Seni çok seviyorum, güzelim.</p>
+
+      <p>Mesafeler ne kadar uzun olursa olsun, kalbimde senin için ayırdığım yerin ne kadar özel olduğunu bilmeni istiyorum.</p>
+
+      <p>Şimdi gel, bu hikâyenin devamını birlikte yazalım.</p>
+
+      <p><strong>Sen ve ben… Biz olalım.</strong> ♾️❤️</p>
+
+      <p><em>Seninle, kilometrelerin ötesinde başlayan ve kavuştuğumuz gün daha da güzelleşmesini umduğum bir hikâyenin ilk sayfasında…</em> 💌</p>
+    </div>
+    <div class="actions">
+      <a class="back" href="index.html">Geri</a>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const paragraphs = document.querySelectorAll(".content p");
+      if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, {rootMargin:"0px 0px -6% 0px",threshold:.05});
+        paragraphs.forEach((paragraph,index) => {
+          paragraph.classList.add("reveal");
+          paragraph.style.transitionDelay = Math.min(index*25,150) + "ms";
+          observer.observe(paragraph);
+        });
+      }
+      const field = document.getElementById("heartField");
+      if (!field || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const addHeart = () => {
+        const heart = document.createElement("span");
+        heart.className = "floating-heart";
+        heart.textContent = Math.random() > .7 ? "♡" : "♥";
+        heart.style.left = (Math.random()*100) + "%";
+        heart.style.fontSize = (12 + Math.random()*18) + "px";
+        heart.style.setProperty("--duration",(8 + Math.random()*7) + "s");
+        heart.style.setProperty("--drift",Math.round(Math.random()*90-45) + "px");
+        field.append(heart);
+        window.setTimeout(() => heart.remove(),16000);
+      };
+      const timer = window.setInterval(addHeart,720);
+      window.addEventListener("pagehide",() => window.clearInterval(timer),{once:true});
+    })();
+  </script>
+
+</body>
+</html>
