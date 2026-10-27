@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Benimle Çıkar Mısın?</title>
+  <style>
+    :root{--bg1:#fff7f9;--bg2:#fff1f3;--accent:#ff6b81;--accent2:#ff9aa2;--muted:#6b6b6b}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,-webkit-system-font}
+    body{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#222;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:100%;max-width:640px;padding:28px;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,0.08);background:linear-gradient(180deg,#ffffff,rgba(255,245,246,0.9));text-align:center;position:relative;overflow:hidden}
+    h1{font-size:30px;margin:0 0 12px;color:#d3415a}
+    p.lead{margin:0 0 22px;color:var(--muted);font-size:16px}
+    .controls{height:160px;display:flex;align-items:center;justify-content:center;gap:20px;position:relative}
+    button{appearance:none;border:0;cursor:pointer;border-radius:14px;padding:14px 24px;font-size:18px;box-shadow:0 8px 26px rgba(0,0,0,0.08);transition:transform 180ms ease,left 300ms ease,top 300ms ease,background-color 160ms}
+    #yesBtn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:800;transform-origin:center center;display:inline-flex;align-items:center;gap:10px}
+    #yesBtn .heart{width:20px;height:20px;background:radial-gradient(circle at 30% 35%,#fff 0 6px,transparent 7px),linear-gradient(180deg,#ff3d5a,#ff8aa1);border-radius:50%;transform:rotate(-45deg);position:relative}
+    #yesBtn .heart:before,#yesBtn .heart:after{content:'';position:absolute;background:linear-gradient(180deg,#ff3d5a,#ff8aa1);width:20px;height:20px;border-radius:50%}
+    #yesBtn .heart:before{left:-10px}
+    #yesBtn .heart:after{top:-10px}
+    #noBtn{background:#fff;color:#333;position:fixed;left:62%;top:56%;min-width:110px}
+    .hint{font-size:13px;color:var(--muted);margin-top:12px}
+
+    /* Confetti pieces */
+    .confetti-piece{position:fixed;width:10px;height:14px;will-change:transform,opacity;pointer-events:none;z-index:9999}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+
+    /* small responsive tweaks */
+    @media (max-width:420px){h1{font-size:22px}.controls{height:140px}button{padding:12px 16px;font-size:17px}#noBtn{min-width:92px}}
+  
+    *{box-sizing:border-box}
+    @media(max-width:560px){body{min-height:100svh;padding:12px}.card{padding:28px 18px;border-radius:22px}h1{font-size:clamp(26px,8vw,38px);line-height:1.15}.controls{height:190px}#yesBtn,#noBtn{min-height:48px;padding:12px 18px;font-size:17px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <h1>Benimle çıkar mısın, Nur?</h1>
+    <p class="lead">Sadece bir seçim yap — kalbimi sana verdim.</p>
+    <div class="controls">
+      <button id="yesBtn" aria-label="Evet"><span class="heart" aria-hidden="true"></span> Evet</button>
+      <button id="noBtn" aria-label="Hayır">Hayır</button>
+    </div>
+    <div class="hint">Hayır'a basmayı denersen sürpriz olur 😉</div>
+  </div>
+
+  <script>
+    (function(){
+      const yes = document.getElementById('yesBtn');
+      const no = document.getElementById('noBtn');
+      let yesScale = 1;
+      const scaleStep = 0.14; // büyüme miktarı her denemede
+      const maxScale = 3.2;
+
+      // Play a short pop sound using WebAudio
+      function playPop(){
+        try{
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.type = 'sine';
+          o.frequency.value = 600;
+          g.gain.value = 0.06;
+          o.connect(g); g.connect(ctx.destination);
+          o.start();
+          setTimeout(()=>{o.frequency.exponentialRampToValueAtTime(300, ctx.currentTime+0.12);g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.15)},50);
+          setTimeout(()=>{o.stop();ctx.close()},220);
+        }catch(e){/* ignore audio errors */}
+      }
+
+      function randomInt(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+
+      function moveNoAway() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const rect = no.getBoundingClientRect();
+        const btnW = rect.width;
+        const btnH = rect.height;
+        const margin = 10;
+
+        // Try to place the button away from the yes button
+        const yesRect = yes.getBoundingClientRect();
+        let attempts = 0;
+        let x, y;
+        do{
+          x = randomInt(margin, Math.max(margin, vw - btnW - margin));
+          y = randomInt(margin, Math.max(margin, vh - btnH - margin));
+          attempts++;
+        }while(attempts < 12 && ((Math.abs(x - yesRect.left) < yesRect.width*0.9 && Math.abs(y - yesRect.top) < yesRect.height*0.9)));
+
+        no.style.left = x + 'px';
+        no.style.top = y + 'px';
+      }
+
+      function growYes(){
+        yesScale = Math.min(maxScale, +(yesScale + scaleStep).toFixed(3));
+        yes.style.transform = `scale(${yesScale})`;
+        // small pulse
+        yes.animate([{transform:`scale(${yesScale})`},{transform:`scale(${Math.min(maxScale, yesScale + 0.06)})`},{transform:`scale(${yesScale})`}],{duration:320,easing:'ease-out'});
+      }
+
+      function spawnConfetti(){
+        const colors = ['#ff6b81','#ff9aa2','#ffd6e0','#ffe6f0','#ffd1d9'];
+        const count = 60;
+        for(let i=0;i<count;i++){
+          const el = document.createElement('div');
+          el.className = 'confetti-piece';
+          el.style.background = colors[Math.floor(Math.random()*colors.length)];
+          el.style.left = Math.random()*100 + 'vw';
+          el.style.top = (-10 - Math.random()*40) + 'vh';
+          el.style.width = (6 + Math.random()*12)+'px';
+          el.style.height = (8 + Math.random()*14)+'px';
+          el.style.borderRadius = (Math.random()>0.5? '2px' : '50%');
+          const dur = 900 + Math.random()*900;
+          el.style.transition = 'transform '+(dur/1000)+'s linear, opacity 1s linear';
+          document.body.appendChild(el);
+          // trigger animation via requestAnimationFrame so transitions apply
+          requestAnimationFrame(()=>{
+            el.style.transform = `translateY(${110 + Math.random()*20}vh) rotate(${Math.random()*720}deg)`;
+            el.style.opacity = '0';
+          });
+          // remove after animation
+          setTimeout(()=>el.remove(), dur+900);
+        }
+      }
+
+      function evade(e){
+        e.preventDefault();
+        moveNoAway();
+        growYes();
+        playPop();
+      }
+
+      no.addEventListener('mouseenter', evade);
+      no.addEventListener('touchstart', evade, {passive:false});
+      no.addEventListener('click', evade);
+
+      yes.addEventListener('click', function(ev){
+        ev.preventDefault();
+        // celebrate then go to acceptance page
+        spawnConfetti();
+        playPop();
+        // small heart pulse
+        yes.animate([{transform:`scale(${yesScale}) rotate(-2deg)`},{transform:`scale(${Math.min(maxScale, yesScale+0.18)}) rotate(2deg)`},{transform:`scale(${yesScale}) rotate(0deg)`}],{duration:700,easing:'cubic-bezier(.2,.8,.2,1)'});
+        setTimeout(()=>{window.location.href = 'letter.html'},900);
+      });
+
+      // Initial placement
+      window.addEventListener('load', function(){
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        no.style.left = Math.floor(vw*0.62) + 'px';
+        no.style.top = Math.floor(vh*0.56) + 'px';
+      });
+    })();
+  </script>
+</body>
+</html>
