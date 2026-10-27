@@ -1,21 +1,18 @@
 # Nur için — Çıkma Teklifi Sitesi
 
-Bu depo, GitHub Pages üzerinde yayımlanabilen küçük bir statik web sitesidir.
+Nur'a hazırlanan mobil uyumlu teklif sayfası ve mektup. Tamamen statik dosyalardan oluşur.
 
-## Site dosyaları
-
-- index.html: Nur'a sorulan teklif ve Evet/Hayır butonları.
-- letter.html: Evet'e basınca açılan mektup, paragraf geçişleri ve uçuşan kalpler.
-- letter.txt: Mektubun metni.
-- Yeni klasör/: önceki yüklemeden kalan dosyalar; korunmuştur.
+## Dosyalar
+- index.html — teklif ve Evet/Hayır butonları
+- letter.html — mektup ve yumuşak paragraf geçişleri
+- letter.txt — ekli mektubun metni
+- styles.css — pembe tonlarda görünüm ve animasyonlar
+- proposal.js, letter.js — buton etkileşimleri ve mektup efektleri
 
 ## GitHub Pages
+Bu depo herkese açık. GitHub Pages'te Settings → Pages bölümünde Deploy from a branch, main ve /(root) seçilip Save'e basılmalıdır.
 
-Site dosyaları deponun kök dizinindedir. Settings → Pages bölümünde kaynak olarak Deploy from a branch, branch olarak main, klasör olarak /(root) seçilirse site şu adreste açılır:
+Site adresi: https://senseiwu31.github.io/nur-icin/
 
-https://SenseiWU31.github.io/seni-cok-seviyorum-/
-
-Yayın ayarlarında değişiklik yaparsan GitHub Pages'in güncel adımları:
+Yayın ayarları değişirse güncel GitHub yönergesi:
 https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
-
-GitHub Pages'te yayımlanan mektup internetten herkes tarafından görülebilir.
